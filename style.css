@@ -246,12 +246,12 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    justify-items: center;
+    padding: 0 6px;
   }
 
   .gift {
-    width: 95px;
-    height: 95px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
 
   .gift-img {
@@ -269,4 +269,8 @@ body {
     font-size: 0.85em;
     line-height: 1.25;
   }
+  
+  .gift {
+  border-radius: 18px;
+}
 }
