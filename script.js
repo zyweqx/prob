@@ -23,3 +23,4 @@ function toggleGift(gift) {
   gift.classList.toggle('open');
 }
 
+
