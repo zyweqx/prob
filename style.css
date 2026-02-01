@@ -1,0 +1,272 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffd6e8, #fff);
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.title {
+  margin-top: 40px;
+  font-size: 3em;
+  color: #c2185b;
+  font-weight: 700;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.title-heart {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-left: 12px;
+  opacity: 0.85;
+}
+
+.subtitle {
+  font-size: 1.6em;
+  color: #c2185b;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* 💖 Сердечки */
+.hearts {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
+}
+
+/* 🎁 Подарки */
+.gifts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  position: relative;
+  z-index: 5;
+}
+
+.gift {
+  cursor: pointer;
+}
+
+.gift-box {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease;
+}
+
+.gift:hover .gift-box {
+  transform: scale(1.05);
+}
+
+.gift-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 🎀 Контент подарка */
+.gift-content {
+  position: absolute;
+  inset: 15px;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.4s ease;
+  text-align: center;
+  padding: 10px;
+}
+
+.gift.open .gift-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gift.open .gift-img {
+  opacity: 0;
+}
+
+.gift-content.text {
+  font-size: 1.15em;
+  color: #c2185b;
+  font-weight: 600;
+}
+
+.gift-content.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.title-heart {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-left: 12px;
+  opacity: 0.85;
+  animation: softPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 105, 180, 0);
+  }
+  40% {
+    box-shadow: 
+      0 0 20px rgba(255, 105, 180, 0.6),
+      0 0 40px rgba(255, 182, 193, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 105, 180, 0);
+  }
+}
+
+.gift {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.gift::before {
+  content: "";
+  position: absolute;
+  inset: -35px;
+  background: radial-gradient(
+  circle,
+  rgba(255, 160, 190, 0.65) 0%,
+  rgba(255, 160, 190, 0.45) 35%,
+  rgba(255, 160, 190, 0.25) 55%,
+  rgba(255, 160, 190, 0) 75%
+);
+  filter: blur(55px);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gift.open::before {
+  opacity: 1;
+  animation: glowBreath 4.5s ease-in-out infinite;
+}
+
+@keyframes glowBreath {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 0 8px;
+  }
+
+  .title {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .title-heart {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gifts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .gift {
+    width: 95px;
+    height: 95px;
+  }
+
+  .gift-img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
+
+  .gift-content img {
+    max-width: 75%;
+    max-height: 75%;
+  }
+
+  .gift-content p {
+    font-size: 0.85em;
+    line-height: 1.25;
+  }
+}
